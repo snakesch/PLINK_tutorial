@@ -3,74 +3,28 @@ This repository contains all test data and code for BBMS2003 Human Genetics PLIN
 
 PLINK version 1.9b precompiled binary can be downloaded [here](https://www.cog-genomics.org/plink/). ([32-bit or 64-bit ?](doc/system_bits.md))
 
-[Working Powerpoint slides](https://connecthkuhk-my.sharepoint.com/:f:/g/personal/snakesch_connect_hku_hk/EvZJNo048llFv-Gyzj2lMgEBICw1nYxhNv7-JH_fgM92FQ?email=leiyao1997%40connect.hku.hk&e=4crymg)
+# Announcements
+* SNPs for LDlink can be found [here](data/ldlink_snps.txt)
+* Original `pheno.txt` contained an error where FID == 0. A [fixed version](data/pheno.txt) changed FID to be the same as IID. 
 
+# Workthrough
+We assume the working directory is the directory which PLINK binary is in. If not, download PLINK from the official site above and decompress the ZIP archive. Locate the decompressed files with a file browser. Right-click the binary (plink for Mac and plink.exe for Windows), select `Get info` or `Properties`. Copy the path name and open a terminal (which you should already have by running `terminal` application [Mac] or `terminal` in the Search box [Windows]).
 
-# SNPs for LDlink
-rs41289512
-rs1808665
-rs365653
-rs138607350
-rs146275714
-rs390952
-rs548051568
-rs150639620
-rs6859
-rs142042446
-rs12972156
-rs12972970
-rs34342646
-rs283811
-rs283812
-rs200866118
-rs201679752
-rs1379193398
-rs200573101
-rs7254892
-rs283815
-rs6857
-rs71352238
-rs184017
-rs2075650
-rs157581
-rs34095326
-rs34404554
-rs11556505
-rs157582
-rs59007384
-rs157584
-rs1160983
-rs157585
-rs157588
-rs157590
-rs61679753
-rs1160985
-rs760136
-rs741780
-rs1038025
-rs1038026
-rs34215622
-rs10119
-rs7259620
-rs405509
-rs769449
-rs429358
-rs75627662
-rs10414043
-rs7256200
-rs483082
-rs438811
-rs11568822
-rs12691088
-rs5117
-rs73052335
-rs12721051
-rs56131196
-rs4420638
-rs560231226
-rs814573
-rs56369833
-rs157592
-rs111789331
-rs66626994
-rs7254133
+In the terminal prompt, type `cd` + `<SPACE>` and the path you just copied. 
+
+Download test data `data.zip` from "Releases" on GitHub. Decompress and place all file contents in the same path as PLINK binary. 
+
+For Windows users, replace `plink` with `plink.exe`.
+
+**1. Converting VCF to PLINK binary formats**
+``./plink --vcf alzheimers_demo.vcf.gz --make-bed --out alzheimers``
+
+**2. Logistic modelling**
+``./plink --bfile alzheimers --assoc --allow-no-sex --pheno pheno.txt --pheno-name example_pheno --out alzheimers``
+
+**3. Result analysis and visualization**
+By now, you should have generated summary statistics table of logistic association testing. You can visualize `alzheimers.assoc.logistic` using Excel or `cat` (for Mac/Linux only). Please proceed to `visualization.ipynb` and LocusZoom for additional visualization steps. 
+
+# Contacts
+Louis (snakesch@connect.hku.hk) / Leo (leiyao1997@connect.hku.hk)
+
