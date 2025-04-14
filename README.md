@@ -17,12 +17,15 @@ Download test data `data.zip` from "Releases" on GitHub. Decompress and place al
 For Windows users, replace `plink` with `plink.exe`.
 
 **1. Converting VCF to PLINK binary formats**
+
 ``./plink --vcf alzheimers_demo.vcf.gz --make-bed --out alzheimers``
 
 **2. Logistic modelling**
+
 ``./plink --bfile alzheimers --assoc --allow-no-sex --pheno pheno.txt --pheno-name example_pheno --out alzheimers``
 
 **3. Result analysis and visualization**
+
 By now, you should have generated summary statistics table of logistic association testing. You can visualize `alzheimers.assoc.logistic` using Excel or `cat` (for Mac/Linux only). Please proceed to `visualization.ipynb` and LocusZoom for additional visualization steps. 
 
 # Contacts
